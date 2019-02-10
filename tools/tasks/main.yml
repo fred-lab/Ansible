@@ -1,6 +1,19 @@
 ---
+- name: Tools | Update cache
+  apt:
+    update_cache: yes
 - name: Tools | Install Git
   apt:
     update_cache: yes
     name: git
     state: present
+- name: Tools | Install Vim
+  apt:
+    name: vim
+    state: present
+- name: Tools | Install Fish
+  apt:
+    name: fish
+    state: present
+#- name: Tools | Enable Fish
+#  command: chsh -s /usr/local/bin/fish
