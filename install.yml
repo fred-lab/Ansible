@@ -1,0 +1,26 @@
+---
+- name: Install Server
+  hosts: all
+  remote_user: vagrant
+  become: true
+  become_method: sudo
+  tasks:
+    - include_vars:
+        file: parameters.yml
+    - name: "USER | Add user {{ user }}"
+      user:
+        name: "{{ user }}"
+        shell: /bin/bash
+        state: present
+    - name: "USER | Add SSH key for user {{ user }}"
+      authorized_key:
+        user: "{{ user }}"
+        state: present
+        key: "{{ lookup('file', '~/.ssh/vagrant_key.pub') }}"
+    - name: APT | Update system
+      apt:
+        upgrade: dist
+        update_cache: yes
+        autoclean: yes
+    - include_role:
+        name: tools

@@ -1,0 +1,6 @@
+---
+- name: Tools | Install Git
+  apt:
+    update_cache: yes
+    name: git
+    state: present
