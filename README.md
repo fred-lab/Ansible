@@ -6,3 +6,4 @@ Ansible
 ## Usefull commands
 ```ansible all -m ping -i hosts -u vagrant``` : Ping all host from the specified inventory **hosts** with the user **vagrant**  
 
+```ansible-playbook -i hosts install.yml``` : Run the playbook to install the server
