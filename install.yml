@@ -24,3 +24,5 @@
         autoclean: yes
     - include_role:
         name: tools
+    - include_role:
+        name: php
