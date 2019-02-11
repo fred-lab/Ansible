@@ -3,3 +3,9 @@
 ##########
 user: bokehlicious
 domain: bokehlicious.fr
+debian_codename: stretch
+
+  #######
+ # PHP #
+#######
+php_version: 7.3
