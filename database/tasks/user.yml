@@ -1,0 +1,22 @@
+---
+- name: "Database | Set password for user {{ mysql_root_user }}"
+  mysql_user:
+    check_implicit_admin: true
+    login_user: "{{ mysql_root_user }}"
+    #    login_password: "{{ mysql_root_password }}"
+    login_password: root
+    user: "{{ mysql_root_user }}"
+    host: "{{ mysql_host }}"
+    password: "{{ mysql_root_password }}"
+- name: Database | Remove All Anonymous users
+  mysql_user:
+    name: ""
+    host_all: yes
+    state: absent
+- name: Database | Create All users
+  mysql_user:
+    name: "{{ item.username }}"
+    password: "{{ item.password }}"
+    priv: "{{ item.username }}.*:ALL"
+    state: present
+  loop: "{{ mysql_users }}"

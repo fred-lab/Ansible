@@ -26,3 +26,5 @@
         name: tools
     - include_role:
         name: php
+    - include_role:
+        name: database

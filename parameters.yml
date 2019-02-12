@@ -9,3 +9,24 @@ debian_codename: stretch
  # PHP #
 #######
 php_version: 7.3
+
+  ############
+ # Database #
+############
+mysql_host: localhost
+mysql_port: 3306
+mysql_root_user: root
+#mysql_root_password: !vault |
+#  $ANSIBLE_VAULT;1.1;AES256
+#  63303734633337656530373265363262343037653563393866633730333566383838646631653266
+#  6436306230396331376238353265636433336638363232620a613638613939353462373933663532
+#  37366630643635316561663063663164653330643834343535616231363065366261653632626536
+#  3231663262373632350a356237316563383866643663373665303365336434613837626637616636
+#  3131
+# Add databases to create here
+mysql_databases:
+  - { name: bokehlicious, encoding: utf8, collation: utf8_general_ci}
+# Add users to create here
+# The rule is to create one user for each Database, This user must have the same name as his corresponding database
+mysql_users:
+  - { username: bokehlicious, password: bokehlicious }

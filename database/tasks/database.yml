@@ -1,0 +1,8 @@
+---
+- name: Database | Create Databases
+  mysql_db:
+    name: "{{ item.name }}"
+    encoding: "{{ item.encoding | default('utf8') }}"
+    collation: "{{ item.collation | default('utf8_general_ci')}}"
+    state: present
+  loop: "{{ mysql_databases }}"
