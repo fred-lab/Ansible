@@ -1,22 +1,21 @@
 ---
-- name: "Database | Set password for user {{ mysql_root_user }}"
+# To check Amdin user privilege => SHOW GRANTS FOR 'root'@'localhost';
+- name: Database | Create Admin User
   mysql_user:
-    check_implicit_admin: true
-    login_user: "{{ mysql_root_user }}"
-    #    login_password: "{{ mysql_root_password }}"
-    login_password: root
-    user: "{{ mysql_root_user }}"
-    host: "{{ mysql_host }}"
+    name: "{{ mysql_root_user }}"
     password: "{{ mysql_root_password }}"
+    priv: '*.*:ALL'
+    state: present
 - name: Database | Remove All Anonymous users
   mysql_user:
     name: ""
     host_all: yes
     state: absent
+# To check all user => select user, host from mysql.user;
 - name: Database | Create All users
   mysql_user:
     name: "{{ item.username }}"
-    password: "{{ item.password }}"
+    password: "{{ item.password  | default('pwd')}}"
     priv: "{{ item.username }}.*:ALL"
     state: present
   loop: "{{ mysql_users }}"
