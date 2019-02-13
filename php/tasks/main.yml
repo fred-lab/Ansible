@@ -1,7 +1,7 @@
 ---
 - name: "PHP | Update all packages (Debian {{ debian_codename }})"
   apt:
-    update_cache: yes
+    upgrade: dist
 - name: "PHP | Add dependencies for PHP version (Debian {{ debian_codename }})"
   apt:
     update_cache: yes

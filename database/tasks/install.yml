@@ -1,7 +1,7 @@
 ---
 - name: "Database | Update all packages (Debian {{ debian_codename }})"
   apt:
-    update_cache: yes
+    upgrade: dist
 - name: "Database | Install MySql (Debian {{ debian_codename }})"
   apt:
     update_cache: yes

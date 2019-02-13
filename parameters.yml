@@ -5,6 +5,15 @@ user: bokehlicious
 domain: bokehlicious.fr
 debian_codename: stretch
 
+  ##########
+ # Firewall #
+##########
+# Permission values are : allow, deny, limit & reject
+firewalls_authorizes_ports:
+  - { port: ssh, permission: limit }
+  - { port: http, permission: allow }
+  - { port: https, permission: allow }
+
   #######
  # PHP #
 #######
