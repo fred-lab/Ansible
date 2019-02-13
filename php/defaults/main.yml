@@ -1,3 +1,15 @@
 ---
 php_version: 7.3
 debian_codename: stretch
+# Laravel needs this PHP modules: OpenSSL, PDO, MBString, Tokenizer, XML, CType, JSON, BCMatth
+php_modules:
+  - mbstring
+  - xml
+  - bcmath
+  - zip
+  - mysql
+php_ini:
+  - { find_line: '^;date.timezone =', replace_by: 'date.timezone=UTC'}
+  - { find_line: '^memory_limit =', replace_by: 'memory_limit = 1024M'}
+  - { find_line: '^upload_max_filesize =', replace_by: 'upload_max_filesize = 20M'}
+  - { find_line: '^post_max_size =', replace_by: 'post_max_size = 100M'}
