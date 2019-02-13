@@ -1,0 +1,13 @@
+---
+debian_codename: stretch
+mysql_host: localhost
+mysql_port: 3306
+mysql_root_user: admin
+mysql_root_password: root # Change the password for an encrypted one, with : ansible-vault encrypt_string -vvv
+mysql_databases:
+    - { name: data1, encoding: utf8, collation: utf8_general_ci}
+    - { name: data2, encoding: utf8, collation: utf8_general_ci}
+# The rule is to create one user for each Database, This user must have the same name as his corresponding database
+mysql_users:
+  - { username: data1, password: user1 }
+  - { username: data2, password: user2 }

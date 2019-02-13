@@ -2,3 +2,5 @@
 \.idea/
 
 *.retry
+
+\.vault_pass

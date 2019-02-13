@@ -1,0 +1,17 @@
+---
+- name: "Database | Update all packages (Debian {{ debian_codename }})"
+  apt:
+    update_cache: yes
+- name: "Database | Install MySql (Debian {{ debian_codename }})"
+  apt:
+    update_cache: yes
+    name:
+      - python-mysqldb
+      - mysql-server
+    state: present
+- name: Database | Remove useless packages from the cache
+  apt:
+    autoclean: yes
+- name: Database | Remove dependencies that are no longer required
+  apt:
+    autoremove: yes
