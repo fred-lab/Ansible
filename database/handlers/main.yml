@@ -3,3 +3,6 @@
   service:
     name: mysql
     state: restarted
+
+- name: mysql upgrade
+  command: mysql_upgrade

@@ -6,3 +6,4 @@
     collation: "{{ item.collation | default('utf8_general_ci')}}"
     state: present
   loop: "{{ mysql_databases }}"
+  notify: mysql upgrade
