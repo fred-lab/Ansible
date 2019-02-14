@@ -1,0 +1,23 @@
+---
+- name: "NGINX | Add Nginx Signing Key for Debian {{ debian_codename }}"
+  apt_key:
+    url: https://nginx.org/keys/nginx_signing.key
+    state: present
+- name: "NGINX | Add Nginx repository for Debian {{ debian_codename }}"
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+  loop:
+    - "deb http://nginx.org/packages/{{ linux_distribution }}/ {{ debian_codename }} nginx"
+    - "deb-src http://nginx.org/packages/{{ linux_distribution }}/ {{ debian_codename }} nginx"
+- name: "NGINX | Install Nginx for Debian {{ debian_codename }}"
+  apt:
+    update_cache: yes
+    name: nginx
+    state: present
+- name: NGINX | Remove useless packages from the cache
+  apt:
+    autoclean: yes
+- name: NGINX | Remove dependencies that are no longer required
+  apt:
+    autoremove: yes

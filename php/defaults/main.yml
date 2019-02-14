@@ -1,5 +1,6 @@
 ---
 php_version: 7.3
+php_user: www-data
 debian_codename: stretch
 # Laravel needs this PHP modules: OpenSSL, PDO, MBString, Tokenizer, XML, CType, JSON, BCMatth
 php_modules:
