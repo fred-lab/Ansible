@@ -1,0 +1,24 @@
+---
+- name: "Nodejs | Add Signing Key for Nodejs version {{ nodejs_version }}  (Debian {{ debian_codename }})"
+  apt_key:
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    state: present
+- name: "Nodejs | Add Nodejs version {{ nodejs_version }} repository for Debian {{ debian_codename }}"
+  apt_repository:
+    update_cache: yes
+    repo: "{{ item}}"
+    state: present
+  loop:
+    - "deb https://deb.nodesource.com/node_{{ nodejs_version }}.x {{ debian_codename }} main"
+    - "deb-src https://deb.nodesource.com/node_{{ nodejs_version }}.x {{ debian_codename }} main"
+- name: "Nodejs | Install Nodejs version {{ nodejs_version }} repository for (Debian {{ debian_codename }})"
+  apt:
+    update_cache: yes
+    name: nodejs
+    state: present
+- name: Nodejs | Remove useless packages from the cache
+  apt:
+    autoclean: yes
+- name: Nodejs | Remove dependencies that are no longer required
+  apt:
+    autoremove: yes

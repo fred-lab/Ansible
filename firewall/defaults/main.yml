@@ -1,4 +1,5 @@
 ---
+debian_codename: stretch
 # Permission values are : allow, deny, limit & reject
 firewalls_authorizes_ports:
   - { port: ssh, permission: limit }

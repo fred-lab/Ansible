@@ -46,6 +46,12 @@ mysql_databases:
 mysql_users:
   - { username: bokehlicious, password: "{{ vault.bokehlicious_password }}" }
 
+  ##########
+ # Nodejs #
+##########
+# See versions here https://github.com/nodesource/distributions/blob/master/README.md
+nodejs_version: 11
+
   #########
  # Vault #
 #########
