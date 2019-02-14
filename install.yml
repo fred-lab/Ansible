@@ -30,3 +30,5 @@
         name: php
     - include_role:
         name: database
+    - include_role:
+        name: nodejs
