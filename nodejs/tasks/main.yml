@@ -16,6 +16,14 @@
     update_cache: yes
     name: nodejs
     state: present
+- name: NodeJS | Install packages
+  npm:
+    name: "{{ item.name }}"
+    global: "{{ item.isGlobal }}"
+    path: "{{ item.path }}"
+    state: "{{ item.state }}"
+  when: item.name
+  loop: "{{ nodejs_packages }}"
 - name: Nodejs | Remove useless packages from the cache
   apt:
     autoclean: yes

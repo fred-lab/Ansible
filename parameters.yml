@@ -51,6 +51,13 @@ mysql_users:
 ##########
 # See versions here https://github.com/nodesource/distributions/blob/master/README.md
 nodejs_version: 11
+  # Packages to install with npm, if this array is empty, installation is skipped
+  # - name: name of the package
+  # - goblal : yes | false
+  # - path : if the package is not installed globally, specify a path where to install the package
+  # - state: present | absent | lastest
+nodejs_packages:
+  - { name: , isGlobal: , path: , state: }
 
   #########
  # Vault #
