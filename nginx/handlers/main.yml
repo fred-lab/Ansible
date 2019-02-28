@@ -1,0 +1,8 @@
+---
+- name: nginx restart
+  service:
+    name: mysql
+    state: restarted
+    enabled: yes
+- name: nginx test
+  command: nginx -t

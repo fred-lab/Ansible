@@ -7,4 +7,5 @@
   template:
     src: vhost.conf.j2
     dest: "/etc/nginx/conf.d/{{ item.name }}.conf"
-  loop: "{{ vhosts }} "
+  loop: "{{ vhosts }}"
+  notify: nginx restart

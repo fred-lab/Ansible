@@ -6,3 +6,4 @@
 - name: NGINX | Configure Vhost task
   include_tasks: vhost.yml
   when: vhosts[0].name
+  notify: nginx restart
