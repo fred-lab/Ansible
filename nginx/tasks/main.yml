@@ -1,0 +1,9 @@
+---
+- name: NGINX | Install task
+  include_tasks: install.yml
+- name: NGINX | Configuration task
+  include_tasks: config.yml
+- name: NGINX | Configure Vhost task
+  include_tasks: vhost.yml
+  when: vhosts[0].name
+  notify: nginx restart

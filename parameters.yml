@@ -1,8 +1,10 @@
   ##########
  # Server #
 ##########
-user: bokehlicious
-domain: bokehlicious.fr
+user: jarvis
+vhosts:
+  - { name : bokehlicious, domain : bokehlicious.fr, backend: laravel }
+  - { name : champloo, domain : champloo.fr, backend: symfony }
 debian_codename: stretch
 
   ##########
@@ -18,6 +20,7 @@ firewalls_authorizes_ports:
  # PHP #
 #######
 php_version: 7.3
+php_user: www-data
 # Laravel needs this PHP modules: OpenSSL, PDO, MBString, Tokenizer, XML, CType, JSON, BCMatth
 php_modules:
   - mbstring

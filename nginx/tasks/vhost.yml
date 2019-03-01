@@ -1,0 +1,11 @@
+---
+- name: NGINX | Add new default.conf
+  template:
+    src: default.conf.j2
+    dest: /etc/nginx/conf.d/default.conf
+- name: NGINX | Add all vhost.conf
+  template:
+    src: vhost.conf.j2
+    dest: "/etc/nginx/conf.d/{{ item.name }}.conf"
+  loop: "{{ vhosts }}"
+  notify: nginx restart
