@@ -12,5 +12,6 @@
     rule: "{{ item.permission }}"
   loop: "{{ firewalls_authorizes_ports }}"
 - name: Firewall | Activate UFW
-  ufw:
-    state: enabled
+  service:
+    name: ufw
+    state: started
