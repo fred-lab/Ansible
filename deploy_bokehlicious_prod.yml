@@ -1,0 +1,11 @@
+---
+- name: Deploy Bokehlicious to Prod server
+  hosts: all
+  remote_user: vagrant
+  become: true
+  become_method: sudo
+  tasks:
+    - include_vars:
+        file: parameters.yml
+    - include_role:
+        name: bokehlicious

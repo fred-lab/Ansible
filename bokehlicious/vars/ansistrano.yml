@@ -1,0 +1,8 @@
+---
+# Ansistrano parameters
+ansistrano_deploy_to: /home/bokehlicious/www
+ansistrano_keep_releases: 2
+# Git parameters
+ansistrano_deploy_via: git
+ansistrano_git_repo: ssh://git@gitlab.com/alcyon/bokehlicious.git
+ansistrano_git_branch: master

@@ -1,0 +1,11 @@
+---
+# Bokehlicious parameters
+username : bokehlicious
+domain : bokehlicious.fr
+backend: laravel
+env: prod
+project_deploy_dir: "/home/{{ username }}/www"
+deploy_private_key: ~/.ssh/deploy_bokehlicious
+# git_hostname : gitlab.com || github.com
+git_hostname: gitlab.com
+

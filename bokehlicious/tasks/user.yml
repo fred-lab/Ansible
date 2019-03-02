@@ -1,0 +1,28 @@
+---
+- name: "Bokehlicious | Add group {{ username }}"
+  group:
+    name: "{{ username }}"
+    state: present
+- name: "Bokehlicious | Add user {{ username }}"
+  user:
+    name: "{{ username }}"
+    group: "{{ username }}"
+    shell: /bin/bash
+    state: present
+- name: "Bokehlicious | Add SSH key for user {{ username }}"
+  authorized_key:
+    user: "{{ username }}"
+    state: present
+    key: "{{ lookup('file', '~/.ssh/bokehlicious_user_key.pub') }}"
+- name: "Bokehlicious | Add www-data user to group {{ username }}"
+  user:
+    name: www-data
+    groups: "{{ username }}"
+    append: yes
+- name: "Bokehlicious | Create /home/{{ username }}/www folder"
+  file:
+    path: "/home/{{ username }}/www"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0770

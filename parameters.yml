@@ -2,14 +2,17 @@
  # Server #
 ##########
 user: jarvis
+# List of current sites
+# backend are : laravel, symfony
+# env are : prod, preprod, dev
 vhosts:
-  - { name : bokehlicious, domain : bokehlicious.fr, backend: laravel }
-  - { name : champloo, domain : champloo.fr, backend: symfony }
+  - { name : bokehlicious, domain : bokehlicious.fr, backend: laravel, env: prod }
+  - { name : champloo, domain : champloo.fr, backend: symfony, env: prod }
 debian_codename: stretch
 
-  ##########
+  ############
  # Firewall #
-##########
+############
 # Permission values are : allow, deny, limit & reject
 firewalls_authorizes_ports:
   - { port: ssh, permission: limit }
