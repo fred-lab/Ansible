@@ -8,5 +8,5 @@ ansistrano_before_symlink_shared_tasks_file: "{{ playbook_dir }}/{{ username }}/
 
 # Git parameters
 ansistrano_deploy_via: git
-ansistrano_git_repo: ssh://git@gitlab.com/alcyon/bokehlicious.git
+ansistrano_git_repo: "ssh://{{ git_repo }}"
 ansistrano_git_branch: master
