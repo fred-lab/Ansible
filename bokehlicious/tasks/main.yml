@@ -10,6 +10,8 @@
   include_tasks: user.yml
 - name: Bokehlicious | Configure SSH
   include_tasks: ssh.yml
+- name: Bokehlicious | Create Nginx server
+  include_tasks: nginx.yml
 - name: Bokehlicious | Create Database
   include_tasks: database.yml
   # Restart Mysql

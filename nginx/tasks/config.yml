@@ -12,13 +12,6 @@
     path: /etc/nginx/partials
     state: directory
     mode: 0755
-- name: NGINX | Create logs folder
-  file:
-    path: "/var/log/nginx/{{ item.name }}"
-    state: directory
-    mode: 0755
-  when: item.name
-  loop: "{{ vhosts }} "
 - name: NGINX | Add general.conf
   template:
     src: general.conf.j2

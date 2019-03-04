@@ -1,4 +1,5 @@
 ---
+#Mysql
 - name: mysql restart
   service:
     name: mysql
@@ -6,3 +7,10 @@
 
 - name: mysql upgrade
   command: mysql_upgrade
+
+# Nginx
+- name: nginx restart
+  service:
+    name: mysql
+    state: restarted
+    enabled: yes

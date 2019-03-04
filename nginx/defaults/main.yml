@@ -2,5 +2,3 @@
 linux_distribution: debian
 debian_codename: stretch
 php_user: www-data
-vhosts:
-  - { name : , domain : , backend: }

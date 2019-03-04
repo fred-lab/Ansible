@@ -3,7 +3,5 @@
   include_tasks: install.yml
 - name: Database | User task
   include_tasks: user.yml
-- name: Database | Database task
-  include_tasks: database.yml
 # Restart Mysql
   notify: mysql restart
