@@ -15,3 +15,7 @@
 ```ansible-playbook -i hosts install.yml --flush-cache --ask-vault-pass``` : Run the playbook, and ask for a password to decrypt encrypted passwords.
 
 ```ansible-playbook -i hosts install.yml --flush-cache --vault-password-file .vault_pass``` : Run the playbook, with a file who contain a password to decrypt encrypted passwords. You must create this file.
+
+## Utilisation
+Todo
+- se connecter avec 'superuser'

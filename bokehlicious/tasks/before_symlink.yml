@@ -1,7 +1,0 @@
----
-- name: Before symlink | Bokehlicious | Configure Laravel
-  include_tasks: laravel.yml
-  when: backend ==  laravel
-- name: Before symlink | Bokehlicious | Configure Symfony
-  include_tasks: symfony.yml
-  when: backend == symfony

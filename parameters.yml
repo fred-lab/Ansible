@@ -1,7 +1,7 @@
   ##########
  # Server #
 ##########
-user: jarvis
+superuser: jarvis
 debian_codename: stretch
 
   ############

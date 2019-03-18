@@ -7,14 +7,14 @@
   tasks:
     - include_vars:
         file: parameters.yml
-    - name: "USER | Add user {{ user }}"
+    - name: "USER | Add user {{ superuser }}"
       user:
-        name: "{{ user }}"
+        name: "{{ superuser }}"
         shell: /bin/bash
         state: present
-    - name: "USER | Add SSH key for user {{ user }}"
+    - name: "USER | Add SSH key for user {{ superuser }}"
       authorized_key:
-        user: "{{ user }}"
+        user: "{{ superuser }}"
         state: present
         key: "{{ lookup('file', '~/.ssh/vagrant_key.pub') }}"
     - name: APT | Update system
