@@ -1,0 +1,13 @@
+---
+- name: "After symlink | {{ project_name }} | Remove Laradock folder"
+  file:
+    path: "{{ ansistrano_release_path.stdout }}/laradock"
+    state: absent
+- name: "After symlink | {{ project_name }} | Run migrations"
+  shell: php artisan migrate --force
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}"
+- name: "After symlink | {{ project_name }} | Create parameters.json"
+  command: cp parameters.json.example parameters.json
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}"
