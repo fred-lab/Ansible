@@ -21,7 +21,18 @@ server {
     {% if php_version %}
 
     location ~ ^/index\.php(/|$) {
-        include partials/php_fastcgi.conf;
+        {% if backend == 'laravel' %}
+
+        include partials/laravel_php_fastcgi.conf;
+
+        {% endif %}
+
+        {% if backend == 'symfony' %}
+
+        include partials/symfony_php_fastcgi.conf;
+
+        {% endif %}
+
     }
 
     {% endif %}

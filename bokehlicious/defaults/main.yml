@@ -24,3 +24,4 @@ mysql_password: "{{ vault.bokehlicious_password }}"
 # Globals
 laravel: laravel
 symfony: symfony
+php_version: 7.3

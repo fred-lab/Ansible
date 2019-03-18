@@ -15,3 +15,14 @@
   template:
     src: env.j2
     dest: "{{ ansistrano_shared_path }}/.env"
+- name: Before symlink | Laravel | Create subfolders for Storage folder
+  file:
+    path: "{{ ansistrano_shared_path }}/{{ item }}"
+    state: directory
+    mode: 0775
+  loop:
+    - /storage/app/public
+    - /storage/framework/cache
+    - /storage/framework/sessions
+    - /storage/framework/testing
+    - /storage/framework/views

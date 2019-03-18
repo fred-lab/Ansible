@@ -10,7 +10,17 @@
 
 # Nginx
 - name: nginx restart
+  listen: restart web services
   service:
-    name: mysql
+    name: nginx
     state: restarted
     enabled: yes
+- name: nginx test
+  command: nginx -t
+
+# PHP
+- name: php restart
+  listen: restart web services
+  service:
+    name: "php{{ php_version }}-fpm"
+    state: restarted

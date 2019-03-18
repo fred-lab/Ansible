@@ -17,4 +17,7 @@
   template:
     src: vhost.conf.j2
     dest: "/etc/nginx/conf.d/{{ project_name }}.conf"
-  notify: nginx restart
+  # Test the conf (it will add the log files) and restart Web services (PHP & Nginx)
+  notify:
+    - nginx test
+    - restart web services
