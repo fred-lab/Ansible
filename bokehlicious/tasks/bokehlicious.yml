@@ -11,3 +11,25 @@
   command: cp parameters.json.example parameters.json
   args:
     chdir: "{{ ansistrano_release_path.stdout }}"
+- name: "After symlink | {{ project_name }} | Remove useless files"
+  file:
+    path: "{{ ansistrano_release_path.stdout }}/{{ item }}"
+    state: absent
+  loop:
+    - .env.example
+    - parameters.json.example
+- name: "After symlink | {{ project_name }} | Check if passport_key is present"
+  stat:
+    path: "{{ ansistrano_shared_path }}/passport_key"
+  register: passport_key
+- name: "After symlink | {{ project_name }} | Save Passport Key into a file"
+  shell: "php artisan passport:install > {{ ansistrano_shared_path }}/passport_key"
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}"
+    creates: "{{ ansistrano_shared_path }}/passport_key"
+  when: passport_key.stat.exists == false
+- name: "After symlink | {{ project_name }} | Update Parameters.json with client token"
+  shell: "php artisan bokehlicious:token 2"
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}"
+  when: passport_key.stat.exists == true
