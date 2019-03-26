@@ -32,4 +32,15 @@
   shell: "php artisan bokehlicious:token 2"
   args:
     chdir: "{{ ansistrano_release_path.stdout }}"
-  when: passport_key.stat.exists == true
+  when: passport_key.stat.exists == false
+- name: "After symlink | {{ project_name }} | Seed the database"
+  shell: "php artisan db:seed --class=CategorySeeder"
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}"
+  when: passport_key.stat.exists == false
+- name: "After symlink | {{ project_name }} | Change permissions for public/galeries"
+  file:
+    path: "{{ ansistrano_shared_path }}/public/"
+    state: directory
+    mode: 0775
+    recurse: yes

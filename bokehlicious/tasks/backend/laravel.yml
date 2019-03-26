@@ -20,9 +20,11 @@
     path: "{{ ansistrano_shared_path }}/{{ item }}"
     state: directory
     mode: 0775
+    recurse: yes
   loop:
     - /storage/app/public
     - /storage/framework/cache
     - /storage/framework/sessions
     - /storage/framework/testing
     - /storage/framework/views
+    - /storage/logs
