@@ -1,5 +1,11 @@
 ---
-- name: "After symlink | Bokehlicious | Configure {{ project_name }}"
+- name: "After symlink | {{ project_name }} | Configure {{ project_name }}"
   include_tasks: ./after_symlink/bokehlicious.yml
-- name: "After symlink | Bokehlicious | Run NPM tasks"
+- name: "After symlink | {{ project_name }} | Run NPM tasks"
   include_tasks: ./after_symlink/npm.yml
+- name: "After symlink | {{ project_name }} | Clear cache for {{ backend }}"
+  include_tasks: ./after_symlink/backend/laravel.yml
+  when: backend ==  laravel
+- name: "After symlink | {{ project_name }} | Clear cache for {{ backend }}"
+  include_tasks: ./after_symlink/backend/symfony.yml
+  when: backend == symfony

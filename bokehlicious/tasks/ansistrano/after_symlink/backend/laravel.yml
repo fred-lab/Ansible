@@ -1,0 +1,16 @@
+---
+- name: After symlink | Laravel | Cache the configuration
+  shell: php artisan config:cache
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}"
+- name: After symlink | Laravel | Optimize the configuration
+  shell: php artisan optimize
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}"
+- name: After symlink | Laravel | Clear all caches
+  shell: "php artisan {{ item }}"
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}"
+  loop:
+    - cache:clear
+    - view:clear
