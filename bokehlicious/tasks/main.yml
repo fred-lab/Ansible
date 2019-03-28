@@ -7,17 +7,17 @@
     update_cache: yes
     autoclean: yes
 - name: Bokehlicious | Configure User
-  include_tasks: user.yml
+  include_tasks: ./host/user.yml
 - name: Bokehlicious | Configure SSH
-  include_tasks: ssh.yml
+  include_tasks: ./host/ssh.yml
 - name: Bokehlicious | Update Nginx server
-  include_tasks: nginx.yml
+  include_tasks: ./host/nginx.yml
 - name: Bokehlicious | Update Database
-  include_tasks: database.yml
+  include_tasks: ./host/database.yml
   # Restart Mysql
   notify: mysql restart
 - name: Bokehlicious | Update PHP
-  include_tasks: php.yml
+  include_tasks: ./host/php.yml
 - include_role:
     name: ansistrano.deploy
     apply:

@@ -1,5 +1,5 @@
 ---
 - name: "After symlink | Bokehlicious | Configure {{ project_name }}"
-  include_tasks: ../bokehlicious.yml
+  include_tasks: ./after_symlink/bokehlicious.yml
 - name: "After symlink | Bokehlicious | Run NPM tasks"
-  include_tasks: ../npm.yml
+  include_tasks: ./after_symlink/npm.yml
