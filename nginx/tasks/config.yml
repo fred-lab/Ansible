@@ -12,13 +12,6 @@
     path: /etc/nginx/partials
     state: directory
     mode: 0755
-- name: NGINX | Create logs folder
-  file:
-    path: "/var/log/nginx/{{ item.name }}"
-    state: directory
-    mode: 0755
-  when: item.name
-  loop: "{{ vhosts }} "
 - name: NGINX | Add general.conf
   template:
     src: general.conf.j2
@@ -27,7 +20,11 @@
   template:
     src: nginx.conf.j2
     dest: /etc/nginx/nginx.conf
-- name: NGINX | Add php_fastcgi.conf
+- name: NGINX | Add Laravel php_fastcgi.conf
   template:
-    src: php_fastcgi.conf.j2
-    dest: /etc/nginx/partials/php_fastcgi.conf
+    src: laravel_php_fastcgi.conf.j2
+    dest: /etc/nginx/partials/laravel_php_fastcgi.conf
+- name: NGINX | Add Symfony php_fastcgi.conf
+  template:
+    src: symfony_php_fastcgi.conf.j2
+    dest: /etc/nginx/partials/symfony_php_fastcgi.conf

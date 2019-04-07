@@ -1,0 +1,15 @@
+---
+# To check all user => select user, host from mysql.user;
+- name: "{{ project_name }} | Database | Create user : {{ mysql_user }}"
+  mysql_user:
+    name: "{{ mysql_user }}"
+    password: "{{ mysql_password }}"
+    priv: "{{ project_name }}.*:ALL"
+    state: present
+- name: "{{ project_name }} | Database | Create Databases : {{ mysql_db }}"
+  mysql_db:
+    name: "{{ mysql_db }}"
+    encoding: "{{ mysql_encoding | default('utf8') }}"
+    collation: "{{ mysql_collation | default('utf8_general_ci')}}"
+    state: present
+  notify: mysql upgrade

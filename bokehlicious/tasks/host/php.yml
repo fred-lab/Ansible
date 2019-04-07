@@ -1,0 +1,7 @@
+---
+- name: "{{ project_name }} | PHP | Install php-imagick"
+  apt:
+    update_cache: yes
+    name:
+      - php-imagick
+    state: present

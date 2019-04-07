@@ -1,0 +1,30 @@
+---
+- name: Before symlink | Laravel | Composer install
+  command: composer install
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}"
+- name: Before symlink | Laravel | Generate App key
+  shell: "php artisan key:generate --show > {{ ansistrano_shared_path }}/app_key"
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}"
+    creates: "{{ ansistrano_shared_path }}/app_key"
+- name: Before symlink | Laravel | Get App key
+  command: "cat {{ ansistrano_shared_path }}/app_key"
+  register: app_key
+- name: Before symlink | Laravel | Generate .env file
+  template:
+    src: env.j2
+    dest: "{{ ansistrano_shared_path }}/.env"
+- name: Before symlink | Laravel | Create subfolders for Storage folder
+  file:
+    path: "{{ ansistrano_shared_path }}/{{ item }}"
+    state: directory
+    mode: 0775
+    recurse: yes
+  loop:
+    - storage/app/public
+    - storage/framework/cache
+    - storage/framework/sessions
+    - storage/framework/testing
+    - storage/framework/views
+    - storage/logs

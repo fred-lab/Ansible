@@ -2,12 +2,20 @@
 - name: "Database | Update all packages (Debian {{ debian_codename }})"
   apt:
     upgrade: dist
-- name: "Database | Install MySql (Debian {{ debian_codename }})"
+- name: "Database | Add Mariadb key server (Debian {{ debian_codename }})"
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: "0xF1656F24C74CD1D8"
+- name: "Database | Add Mariadb repository (Debian {{ debian_codename }})"
+  apt_repository:
+    repo: "deb [arch=amd64,i386,ppc64el] http://ftp.igh.cnrs.fr/pub/mariadb/repo/10.3/debian stretch main"
+    state: present
+- name: "Database | Install MySql (mariadb) (Debian {{ debian_codename }})"
   apt:
     update_cache: yes
     name:
       - python-mysqldb
-      - mysql-server
+      - mariadb-server
     state: present
 - name: Database | Remove useless packages from the cache
   apt:

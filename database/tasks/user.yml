@@ -11,11 +11,3 @@
     name: ""
     host_all: yes
     state: absent
-# To check all user => select user, host from mysql.user;
-- name: Database | Create All users
-  mysql_user:
-    name: "{{ item.username }}"
-    password: "{{ item.password  | default('pwd')}}"
-    priv: "{{ item.username }}.*:ALL"
-    state: present
-  loop: "{{ mysql_users }}"

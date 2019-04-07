@@ -1,0 +1,27 @@
+---
+# Bokehlicious parameters
+username : bokehlicious
+project_name : bokehlicious
+domain : bokehlicious.fr
+# backend : laravel || symfony
+backend: "{{ laravel }}"
+env: prod
+project_deploy_dir: "/home/{{ username }}/www"
+deploy_private_key: ~/.ssh/deploy_bokehlicious
+# git_hostname : gitlab.com || github.com
+git_hostname: gitlab.com
+git_repo: git@gitlab.com/alcyon/bokehlicious.git
+
+# Bokelicious database parameters
+# The rule is to create one specific user for each Database, for security purpose
+mysql_db: "{{ project_name }}"
+mysql_encoding: utf8
+mysql_collation: utf8_general_ci
+mysql_port: 3306
+mysql_user: "{{ username }}"
+mysql_password: "{{ vault.bokehlicious_password }}"
+
+# Globals
+laravel: laravel
+symfony: symfony
+php_version: 7.3

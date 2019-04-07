@@ -4,3 +4,5 @@
 *.retry
 
 \.vault_pass
+
+parameters\.yml

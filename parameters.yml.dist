@@ -1,15 +1,13 @@
   ##########
  # Server #
 ##########
-user: jarvis
-vhosts:
-  - { name : bokehlicious, domain : bokehlicious.fr, backend: laravel }
-  - { name : champloo, domain : champloo.fr, backend: symfony }
+superuser: user
+superuser_ssh_key: "~/.ssh/superuser_key.pub"
 debian_codename: stretch
 
-  ##########
+  ############
  # Firewall #
-##########
+############
 # Permission values are : allow, deny, limit & reject
 firewalls_authorizes_ports:
   - { port: ssh, permission: limit }
@@ -41,24 +39,17 @@ mysql_host: localhost
 mysql_port: 3306
 mysql_root_user: jarvis
 mysql_root_password: "{{ vault.mysql_root_password }}"
-# Add databases to create here
-mysql_databases:
-  - { name: bokehlicious, encoding: utf8, collation: utf8_general_ci}
-# Add users to create here
-# The rule is to create one user for each Database, This user must have the same name as his corresponding database
-mysql_users:
-  - { username: bokehlicious, password: "{{ vault.bokehlicious_password }}" }
 
   ##########
  # Nodejs #
 ##########
 # See versions here https://github.com/nodesource/distributions/blob/master/README.md
 nodejs_version: 11
-  # Packages to install with npm, if this array is empty, installation is skipped
-  # - name: name of the package
-  # - goblal : yes | false
-  # - path : if the package is not installed globally, specify a path where to install the package
-  # - state: present | absent | lastest
+# Packages to install with npm, if this array is empty, installation is skipped
+# - name: name of the package
+# - goblal : yes | false
+# - path : if the package is not installed globally, specify a path where to install the package
+# - state: present | absent | lastest
 nodejs_packages:
   - { name: , isGlobal: , path: , state: }
 
@@ -69,14 +60,14 @@ vault:
   mysql_root_password: !vault |
     $ANSIBLE_VAULT;1.1;AES256
     63303734633337656530373265363262343037653563393866633730333566383838646631653266
-    6436306230396331376238353265636433336638363232620a613638613939353462373933663532
-    37366630643635316561663063663164653330643834343535616231363065366261653632626536
-    3231663262373632350a356237316563383866643663373665303365336434613837626637616636
+    63303734633337656530373265363262343037653563393866633730333566383838646631653266
+    63303734633337656530373265363262343037653563393866633730333566383838646631653266
+    63303734633337656530373265363262343037653563393866633730333566383838646631653266
     3131
   bokehlicious_password: !vault |
     $ANSIBLE_VAULT;1.1;AES256
     61323634623566396565343339353933323835336637376661386331343232653730326338663663
-    3436386563366263333833623665613831326531363733310a656232313931626265376534306465
-    34623836363037653634353731656562376637313465356233313837383234666132373762396261
-    3836383535323161320a663466643337343231383931326239356230323465303666366335396166
+    61323634623566396565343339353933323835336637376661386331343232653730326338663663
+    61323634623566396565343339353933323835336637376661386331343232653730326338663663
+    61323634623566396565343339353933323835336637376661386331343232653730326338663663
     3634

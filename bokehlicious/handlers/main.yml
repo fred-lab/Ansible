@@ -1,0 +1,26 @@
+---
+#Mysql
+- name: mysql restart
+  service:
+    name: mysql
+    state: restarted
+
+- name: mysql upgrade
+  command: mysql_upgrade
+
+# Nginx
+- name: nginx restart
+  listen: restart web services
+  service:
+    name: nginx
+    state: restarted
+    enabled: yes
+- name: nginx test
+  command: nginx -t
+
+# PHP
+- name: php restart
+  listen: restart web services
+  service:
+    name: "php{{ php_version }}-fpm"
+    state: restarted

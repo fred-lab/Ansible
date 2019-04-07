@@ -1,11 +1,11 @@
 server {
     listen 80;
     listen [::]:80;
-    server_name {{ item.domain }};
+    server_name {{ domain }};
 
-    root /var/www/{{ item.name }}/public;
+    root {{ ansistrano_deploy_to }}/current/public;
 
-    {% if item.backend == 'laravel' %}
+    {% if backend == 'laravel' %}
 
     index index.html index.htm index.php;
 
@@ -21,7 +21,18 @@ server {
     {% if php_version %}
 
     location ~ ^/index\.php(/|$) {
-        include partials/php_fastcgi.conf;
+        {% if backend == 'laravel' %}
+
+        include partials/laravel_php_fastcgi.conf;
+
+        {% endif %}
+
+        {% if backend == 'symfony' %}
+
+        include partials/symfony_php_fastcgi.conf;
+
+        {% endif %}
+
     }
 
     {% endif %}
@@ -32,8 +43,8 @@ server {
         return 404;
     }
 
-    error_log /var/log/nginx/{{ item.name }}/project_error.log;
-    access_log /var/log/nginx/{{ item.name }}/project_access.log;
+    error_log /var/log/nginx/{{ project_name }}/project_error.log;
+    access_log /var/log/nginx/{{ project_name }}/project_access.log;
 
     include partials/general.conf;
 }
