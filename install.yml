@@ -16,7 +16,9 @@
       authorized_key:
         user: "{{ superuser }}"
         state: present
-        key: "{{ lookup('file', '~/.ssh/vagrant_key.pub') }}"
+        key: "{{ lookup('file', path_to_ssh_key) }}"
+      vars:
+        path_to_ssh_key: "{{ superuser_ssh_key }}"
     - name: APT | Update system
       apt:
         upgrade: dist
