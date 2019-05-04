@@ -9,7 +9,7 @@
 
 Clone the repo: ```git clone https://github.com/fred-lab/Ansible.git```  
 
-Install Ansible: ```pacman -S ansible```
+Install Ansible + Python: ```pacman -S ansible python```
 
 Create **parameters.yml** file : ```cp parameters.yml parameters.yml.dist```  
 
