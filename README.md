@@ -13,7 +13,11 @@ Install Ansible + Python: ```pacman -S ansible python```
 
 Create **parameters.yml** file : ```cp parameters.yml parameters.yml.dist```  
 
+Create **hosts** file : ```cp hosts.yml hosts.yml.dist```  
+
 Create the .vault-pass file : ```touch .vault_pass```  
+
+Update **hosts** with a server name and an IP adress  
 
 Update **parameters.yml** with adequate information :
 - for **superuser**, replace **user** with your username. This user will have access to Root privileges

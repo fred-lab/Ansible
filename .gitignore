@@ -6,3 +6,5 @@
 \.vault_pass
 
 parameters\.yml
+
+hosts
