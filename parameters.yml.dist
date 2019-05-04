@@ -37,7 +37,7 @@ php_ini:
 ############
 mysql_host: localhost
 mysql_port: 3306
-mysql_root_user: jarvis
+mysql_root_user: user
 mysql_root_password: "{{ vault.mysql_root_password }}"
 
   ##########
