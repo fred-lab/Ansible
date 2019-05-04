@@ -1,24 +1,12 @@
 ---
 - name: Install Server
   hosts: all
-  remote_user: vagrant
+  remote_user: "{{ superuser }}"
   become: true
   become_method: sudo
   tasks:
     - include_vars:
         file: parameters.yml
-    - name: "USER | Add user {{ superuser }}"
-      user:
-        name: "{{ superuser }}"
-        shell: /bin/bash
-        state: present
-    - name: "USER | Add SSH key for user {{ superuser }}"
-      authorized_key:
-        user: "{{ superuser }}"
-        state: present
-        key: "{{ lookup('file', path_to_ssh_key) }}"
-      vars:
-        path_to_ssh_key: "{{ superuser_ssh_key }}"
     - name: APT | Update system
       apt:
         upgrade: dist

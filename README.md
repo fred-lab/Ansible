@@ -41,8 +41,6 @@ For security purpose, the logic is to have one superuser with Sudo privilege and
 This users can only access to theirs **home** folder, which contains the application.  
 For the database, its the same logic, one user for one database, and the user can only access to his own database.  
 
-Todo : supprimer l'utilisateur vagrant pour utiliser celui créé pour se connecter au serveur distant et supprimer les tâches pour ajouter le super user qui sont inutiles. On ne garde que le superutilisateur créé lors de l'install de Debian. Ansible doit juste créer des utilisateurs sans droit admin pour chaque application. Attention à la BDD et son root user.
-
 ## Database  
 Connect to the database : ```mysql -uusername -p```  
 Check the databases: ```show databases;```  
