@@ -8,7 +8,7 @@
     id: "0xF1656F24C74CD1D8"
 - name: "Database | Add Mariadb repository (Debian {{ debian_codename }})"
   apt_repository:
-    repo: "deb [arch=amd64,i386,ppc64el] http://ftp.igh.cnrs.fr/pub/mariadb/repo/10.3/debian stretch main"
+    repo: "deb [arch=amd64,i386,ppc64el] http://ftp.igh.cnrs.fr/pub/mariadb/repo/10.3/debian {{ debian_codename }} main"
     state: present
 - name: "Database | Install MySql (mariadb) (Debian {{ debian_codename }})"
   apt:

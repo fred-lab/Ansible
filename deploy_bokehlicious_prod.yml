@@ -1,11 +1,11 @@
 ---
 - name: Deploy Bokehlicious to Prod server
+  vars_files:
+    - parameters.yml
   hosts: all
-  remote_user: vagrant
+  remote_user: "{{ superuser }}"
   become: true
   become_method: sudo
   tasks:
-    - include_vars:
-        file: parameters.yml
     - include_role:
         name: bokehlicious

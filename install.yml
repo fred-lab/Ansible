@@ -1,12 +1,12 @@
 ---
 - name: Install Server
+  vars_files:
+    - parameters.yml
   hosts: all
   remote_user: "{{ superuser }}"
   become: true
   become_method: sudo
   tasks:
-    - include_vars:
-        file: parameters.yml
     - name: APT | Update system
       apt:
         upgrade: dist
